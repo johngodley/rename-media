@@ -36,3 +36,7 @@ You can find full details of installing a plugin on the [plugin installation pag
 
 = 0.1 =
 * Initial release
+
+= 0.1.1 =
+* Store original filename in _original_filename meta data
+* Don't redirect after editing if we came from the admin interface
