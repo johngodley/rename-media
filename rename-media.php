@@ -3,7 +3,7 @@
 Plugin Name: Rename Media
 Plugin URI: http://urbangiraffe.com/plugins/rename-media/
 Description: Rename underlying media files from the WordPress media management interface
-Version: 0.1.1
+Version: 0.1.2
 Author: John Godley
 Author URI: http://urbangiraffe.com
 */
@@ -49,7 +49,7 @@ function rename_media_save( $post, $attachment ) {
 			$old_filename = pathinfo( basename( $old ), PATHINFO_FILENAME );
 			$new_filename = pathinfo( basename( $new ), PATHINFO_FILENAME );
 		
-			foreach ( $meta['sizes'] AS $size => $meta_size ) {
+			foreach ( (array)$meta['sizes'] AS $size => $meta_size ) {
 				$old_file = dirname( $old ).DIRECTORY_SEPARATOR.$meta['sizes'][$size]['file'];
 			
 				$meta['sizes'][$size]['file'] = str_replace( $old_filename, $new_filename, $meta['sizes'][$size]['file'] );
