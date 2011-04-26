@@ -3,7 +3,7 @@ Contributors: johnny5
 Donate link: http://urbangiraffe.com/about/support/
 Tags: media, image, rename, management
 Requires at least: 2.9
-Tested up to: 3.1.1
+Tested up to: 3.1.2
 Stable tag: trunk
 
 Rename underlying media files from the WordPress media management interface
