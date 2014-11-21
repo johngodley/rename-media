@@ -3,7 +3,7 @@
 Plugin Name: Rename Media
 Plugin URI: http://urbangiraffe.com/plugins/rename-media/
 Description: Rename underlying media files from the WordPress media management interface
-Version: 0.1.2
+Version: 0.1.3
 Author: John Godley
 Author URI: http://urbangiraffe.com
 */
@@ -21,9 +21,9 @@ function rename_media_save( $post, $attachment ) {
 
 		// Save
 		wp_update_post( $post );
-		
+
 		$new_url = get_permalink( $post['ID'] );
-		
+
 		$post['guid'] = $new_url;
 		if ( isset( $_REQUEST['_wp_original_http_referer'] ) && strpos( $_REQUEST['_wp_original_http_referer'], '/wp-admin/' ) === false ) {
 			$_REQUEST['_wp_original_http_referer'] = $post['guid'];
@@ -36,7 +36,7 @@ function rename_media_save( $post, $attachment ) {
 		$new_filename = basename( $new );
 
 		$meta['file'] = str_replace( $old_filename, $new_filename, $meta['file'] );
-		
+
 		// Check if new file exists
 		if ( file_exists( $new ) === false ) {
 			$original_filename = get_post_meta( $post['ID'], '_original_filename', true );
@@ -44,18 +44,18 @@ function rename_media_save( $post, $attachment ) {
 				add_post_meta( $post['ID'], '_original_filename', $old_filename );
 
 			rename( $old, $new );
-		
+
 			// Rename the sizes
 			$old_filename = pathinfo( basename( $old ), PATHINFO_FILENAME );
 			$new_filename = pathinfo( basename( $new ), PATHINFO_FILENAME );
-		
+
 			foreach ( (array)$meta['sizes'] AS $size => $meta_size ) {
 				$old_file = dirname( $old ).DIRECTORY_SEPARATOR.$meta['sizes'][$size]['file'];
-			
+
 				$meta['sizes'][$size]['file'] = str_replace( $old_filename, $new_filename, $meta['sizes'][$size]['file'] );
 
 				$new_file = dirname( $old ).DIRECTORY_SEPARATOR.$meta['sizes'][$size]['file'];
-			
+
 				rename( $old_file, $new_file );
 			}
 

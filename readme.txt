@@ -3,7 +3,7 @@ Contributors: johnny5
 Donate link: http://urbangiraffe.com/about/support/
 Tags: media, image, rename, management
 Requires at least: 2.9
-Tested up to: 3.2.1
+Tested up to: 4.1
 Stable tag: trunk
 
 Rename underlying media files from the WordPress media management interface
@@ -33,6 +33,9 @@ You can find full details of installing a plugin on the [plugin installation pag
 1. Changing the media title will result in the filename also changing
 
 == Changelog ==
+
+= 0.1.3 =
+* Refresh for WP 4
 
 = 0.1.2 =
 * Fix PHP warning when no media sizes
